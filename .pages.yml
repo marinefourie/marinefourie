@@ -13,11 +13,11 @@ content:
       fields: [title, client, year]
     fields:
       - name: title
-        label: Title
+        label: Role / Service (e.g. "Creative Direction")
         type: string
         required: true
       - name: client
-        label: Client
+        label: Client (e.g. "Nike")
         type: string
         required: true
       - name: year
