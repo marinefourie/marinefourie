@@ -5,6 +5,8 @@ export interface Project {
   tag: string;
   year: number;
   description?: string;
-  hero: string;
-  images: string[];
+  hero?: string;
+  hero_video?: string;
+  images?: string[];
+  videos?: string[];
 }

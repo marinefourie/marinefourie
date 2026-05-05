@@ -31,11 +31,18 @@ content:
         label: About this project
         type: text
       - name: hero
-        label: Hero Image / Video
-        type: file
+        label: Hero Image
+        type: image
+      - name: hero_video
+        label: Hero Video URL
+        type: string
       - name: images
-        label: Gallery
-        type: file
+        label: Gallery Images
+        type: image
+        list: true
+      - name: videos
+        label: Gallery Video URLs
+        type: string
         list: true
 
   - name: settings
@@ -76,5 +83,8 @@ content:
         type: text
         required: true
       - name: hero_media
-        label: Homepage Hero (Image or Video)
-        type: file
+        label: Homepage Hero Image
+        type: image
+      - name: hero_video
+        label: Homepage Hero Video URL
+        type: string

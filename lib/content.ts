@@ -30,7 +30,8 @@ export interface Settings {
   bio: string;
   bio_extended: string;
   contact_intro: string;
-  hero_media: string;
+  hero_media?: string;
+  hero_video?: string;
 }
 
 export function getSettings(): Settings {
@@ -45,7 +46,6 @@ export function getSettings(): Settings {
       bio: "",
       bio_extended: "",
       contact_intro: "",
-      hero_media: "",
     };
   }
   return JSON.parse(readFileSync(path, "utf-8"));

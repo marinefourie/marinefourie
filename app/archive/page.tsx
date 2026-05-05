@@ -4,10 +4,11 @@ import { getProjects } from "@/lib/content";
 import type { Project } from "@/lib/projects";
 
 function getArchiveImage(project: Project): string {
-  if (/\.(webm|mp4|mov)$/i.test(project.hero)) {
-    return project.images.find((img) => !/\.(webm|mp4|mov)$/i.test(img)) ?? project.hero;
+  const hero = project.hero ?? "";
+  if (/\.(webm|mp4|mov)$/i.test(hero)) {
+    return (project.images ?? []).find((img) => !/\.(webm|mp4|mov)$/i.test(img)) ?? hero;
   }
-  return project.hero;
+  return hero;
 }
 
 const textClass = "font-mono text-[9px] font-bold tracking-normal uppercase leading-none";

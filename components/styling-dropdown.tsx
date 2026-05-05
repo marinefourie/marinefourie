@@ -8,10 +8,8 @@ import { useMenu } from "./menu-context";
 import type { Project } from "@/lib/projects";
 
 function getPreviewImage(project: Project): string {
-  if (/\.(webm|mp4|mov)$/i.test(project.hero)) {
-    return project.images.find((img) => !/\.(webm|mp4|mov)$/i.test(img)) ?? "";
-  }
-  return project.hero;
+  if (project.hero && !/\.(webm|mp4|mov)$/i.test(project.hero)) return project.hero;
+  return (project.images ?? []).find((img) => !/\.(webm|mp4|mov)$/i.test(img)) ?? "";
 }
 
 export default function StylingDropdown({ projects }: { projects: Project[] }) {

@@ -14,7 +14,9 @@ export default function ProjectGallery({ project }: { project: Project }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [activePanel, setActivePanel] = useState<Panel>("gallery");
 
-  const totalImages = project.images.length;
+  const heroSrc = project.hero_video || project.hero || "";
+  const allMedia = [...(project.images || []), ...(project.videos || [])];
+  const totalImages = allMedia.length;
   const panelOpen = activePanel !== "gallery";
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -45,7 +47,7 @@ export default function ProjectGallery({ project }: { project: Project }) {
           className={`flex-1 relative cursor-pointer overflow-hidden transition-opacity duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${panelOpen ? "opacity-30" : "opacity-100"}`}
           onClick={handleClick}
         >
-          {project.images.map((img, i) => (
+          {allMedia.map((img, i) => (
             <div
               key={i}
               className={`absolute inset-0 flex items-center justify-center px-6 md:px-0 pt-28 pb-8 transition-opacity duration-500 ${i === currentImage ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
@@ -104,7 +106,7 @@ export default function ProjectGallery({ project }: { project: Project }) {
       >
         {activePanel === "overview" && (
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 px-6 md:px-10 lg:px-16 pb-10 pt-2">
-            {project.images.map((img, i) => (
+            {allMedia.map((img, i) => (
               <button
                 key={i}
                 onClick={(e) => {

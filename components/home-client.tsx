@@ -93,24 +93,27 @@ export default function HomeClient({ projects, name, role, location, heroMedia }
             }}
           >
             <div className="absolute inset-y-0 inset-x-6 md:inset-x-0">
-              {/\.(webm|mp4|mov)$/i.test(project.hero) ? (
-                <video
-                  src={project.hero}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-contain object-center"
-                />
-              ) : (
-                <Image
-                  src={project.hero}
-                  alt={project.title}
-                  fill
-                  className="object-contain object-center"
-                  priority={i === 0}
-                />
-              )}
+              {(() => {
+                const src = project.hero_video || project.hero || "";
+                return isVideo(src) ? (
+                  <video
+                    src={src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-contain object-center"
+                  />
+                ) : src ? (
+                  <Image
+                    src={src}
+                    alt={project.title}
+                    fill
+                    className="object-contain object-center"
+                    priority={i === 0}
+                  />
+                ) : null;
+              })()}
             </div>
           </div>
 
