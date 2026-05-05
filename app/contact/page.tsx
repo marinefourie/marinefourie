@@ -40,10 +40,6 @@ export default async function ContactPage() {
                 </div>
             </div>
 
-            <div
-                className="fixed inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay z-0"
-                style={{ backgroundImage: 'url("/assets/noise.png")' }}
-            />
         </section>
     );
 }

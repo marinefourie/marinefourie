@@ -9,10 +9,6 @@ export default async function InformationPage() {
             <div className="w-full flex flex-col items-start relative z-10">
                 <InformationClient bio={bio} bioExtended={bio_extended} instagram={instagram} />
             </div>
-            <div
-                className="fixed inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay z-0"
-                style={{ backgroundImage: 'url("/assets/noise.png")' }}
-            />
         </section>
     );
 }
