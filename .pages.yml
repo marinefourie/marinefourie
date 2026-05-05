@@ -1,0 +1,80 @@
+media:
+  input: public/assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    format: json
+    filename: "{fields.title}"
+    view:
+      fields: [title, client, year]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: client
+        label: Client
+        type: string
+        required: true
+      - name: year
+        label: Year
+        type: number
+        required: true
+      - name: tag
+        label: Tag
+        type: string
+      - name: description
+        label: About this project
+        type: text
+      - name: hero
+        label: Hero Image / Video
+        type: image
+      - name: images
+        label: Gallery
+        type: image
+        list: true
+
+  - name: settings
+    label: Site Settings
+    type: file
+    path: content/settings.json
+    format: json
+    fields:
+      - name: name
+        label: Your Name
+        type: string
+        required: true
+      - name: role
+        label: Your Role
+        type: string
+        required: true
+      - name: location
+        label: Location
+        type: string
+        required: true
+      - name: email
+        label: Contact Email
+        type: string
+        required: true
+      - name: instagram
+        label: Instagram Handle
+        type: string
+        required: true
+      - name: bio
+        label: Bio
+        type: text
+        required: true
+      - name: bio_extended
+        label: Bio (continued)
+        type: text
+      - name: contact_intro
+        label: Contact Page Intro
+        type: text
+        required: true
+      - name: hero_video
+        label: Homepage Background Video
+        type: image
