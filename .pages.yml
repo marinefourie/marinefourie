@@ -32,10 +32,10 @@ content:
         type: text
       - name: hero
         label: Hero Image / Video
-        type: image
+        type: file
       - name: images
         label: Gallery
-        type: image
+        type: file
         list: true
 
   - name: settings
@@ -77,4 +77,4 @@ content:
         required: true
       - name: hero_media
         label: Homepage Hero (Image or Video)
-        type: image
+        type: file
