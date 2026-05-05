@@ -23,8 +23,8 @@ export const project = defineType({
     defineField({ name: "tag", title: "Tag", type: "string" }),
     defineField({ name: "description", title: "About this project", type: "text" }),
     defineField({ name: "hero", title: "Hero Image", type: "image" }),
-    defineField({ name: "hero_video", title: "Hero Video URL", type: "url" }),
+    defineField({ name: "hero_video", title: "Hero Video", type: "file", options: { accept: "video/*" } }),
     defineField({ name: "images", title: "Gallery Images", type: "array", of: [{ type: "image" }] }),
-    defineField({ name: "videos", title: "Gallery Video URLs", type: "array", of: [{ type: "url" }] }),
+    defineField({ name: "videos", title: "Gallery Videos", type: "array", of: [{ type: "file", options: { accept: "video/*" } }] }),
   ],
 });

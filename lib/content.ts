@@ -23,9 +23,9 @@ const projectFields = `
   tag,
   description,
   "hero": hero.asset->url,
-  hero_video,
+  "hero_video": hero_video.asset->url,
   "images": images[].asset->url,
-  "videos": videos
+  "videos": videos[].asset->url
 `;
 
 export async function getProjects(): Promise<Project[]> {
@@ -55,7 +55,7 @@ export async function getSettings(): Promise<Settings> {
     *[_type == "settings"][0] {
       name, role, location, email, instagram, bio, bio_extended, contact_intro,
       "hero_media": hero_media.asset->url,
-      hero_video
+      "hero_video": hero_video.asset->url
     }
   `);
   return data ?? defaultSettings;

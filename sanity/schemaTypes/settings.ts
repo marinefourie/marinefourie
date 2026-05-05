@@ -14,6 +14,6 @@ export const settings = defineType({
     defineField({ name: "bio_extended", title: "Bio (continued)", type: "text" }),
     defineField({ name: "contact_intro", title: "Contact Page Intro", type: "text", validation: (Rule) => Rule.required() }),
     defineField({ name: "hero_media", title: "Homepage Hero Image", type: "image" }),
-    defineField({ name: "hero_video", title: "Homepage Hero Video URL", type: "url" }),
+    defineField({ name: "hero_video", title: "Homepage Hero Video", type: "file", options: { accept: "video/*" } }),
   ],
 });
