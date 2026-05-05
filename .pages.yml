@@ -75,6 +75,6 @@ content:
         label: Contact Page Intro
         type: text
         required: true
-      - name: hero_video
-        label: Homepage Background Video
+      - name: hero_media
+        label: Homepage Hero (Image or Video)
         type: image

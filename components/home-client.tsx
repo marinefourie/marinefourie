@@ -6,7 +6,9 @@ import { useRef, useEffect, useState } from "react";
 import { useMenu } from "@/components/menu-context";
 import type { Project } from "@/lib/projects";
 
-export default function HomeClient({ projects, name, role, location, heroVideo }: { projects: Project[]; name: string; role: string; location: string; heroVideo: string }) {
+const isVideo = (src: string) => /\.(webm|mp4|mov)$/i.test(src);
+
+export default function HomeClient({ projects, name, role, location, heroMedia }: { projects: Project[]; name: string; role: string; location: string; heroMedia: string }) {
   const containerRef = useRef<HTMLElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const { menuOpen, preloaderDone, setHeroActive } = useMenu();
@@ -48,16 +50,25 @@ export default function HomeClient({ projects, name, role, location, heroVideo }
       className={`h-[100dvh] snap-y snap-mandatory overflow-y-auto transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? "md:translate-y-0 translate-y-[50vh]" : "translate-y-0"}`}
     >
       <section className="relative h-[100dvh] snap-start overflow-hidden bg-black">
-        <video
-          ref={heroVideoRef}
-          src={heroVideo}
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="Hero background video"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {isVideo(heroMedia) ? (
+          <video
+            ref={heroVideoRef}
+            src={heroMedia}
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            src={heroMedia}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
         <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 flex items-center justify-end px-6 md:px-10 lg:px-16">
           <div className="flex flex-col items-end gap-1">
