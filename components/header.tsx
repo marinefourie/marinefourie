@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function Header({ name, email, location }: { name: string; email: string; location: string }) {
+export default function Header({ name }: { name: string }) {
   const { menuOpen, setMenuOpen, stylingOpen, setStylingOpen, preloaderDone, heroActive } = useMenu();
 
   const allLinks = [
@@ -89,14 +89,6 @@ export default function Header({ name, email, location }: { name: string; email:
               );
             })}
           </nav>
-          <div
-            className={`mt-auto grid grid-cols-[1fr_auto_1fr] gap-4 items-center font-mono text-[9px] font-bold tracking-normal ${isDark ? "text-background/40" : "text-foreground/40"}`}
-            style={{ opacity: menuOpen ? 1 : 0, transitionDuration: "600ms" }}
-          >
-            <span>{email}</span>
-            <span>|</span>
-            <span className="text-right">{location}</span>
-          </div>
         </div>
       </div>
 

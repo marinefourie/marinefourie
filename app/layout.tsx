@@ -63,7 +63,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [projects, { name, role, email, location }] = await Promise.all([getProjects(), getSettings()]);
+  const [projects, { name, role, email }] = await Promise.all([getProjects(), getSettings()]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -84,7 +84,7 @@ export default async function RootLayout({
       <body className={`${nimbusSans.variable} ${ptMono.variable} antialiased`}>
         <MenuProvider>
           <Preloader name={name} role={role} />
-          <Header name={name} email={email} location={location} />
+          <Header name={name} />
           <StylingDropdown projects={projects} />
           {children}
         </MenuProvider>
