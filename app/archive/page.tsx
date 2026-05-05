@@ -39,26 +39,23 @@ function ProjectRow({ group, cols, sizes, gap }: { group: Project[]; cols: strin
   );
 }
 
-export default function ArchivePage() {
-  const projects = getProjects();
+export default async function ArchivePage() {
+  const projects = await getProjects();
   const mobileRows = [projects.slice(0, 2), projects.slice(2, 4), projects.slice(4)].filter((g) => g.length > 0);
   const desktopRows = [projects.slice(0, 4), projects.slice(4)].filter((g) => g.length > 0);
 
   return (
     <main className="min-h-[100dvh] bg-background px-6 md:px-10 lg:px-16 pt-28 pb-16">
-
       <div className="flex flex-col gap-8 md:hidden">
         {mobileRows.map((group, gi) => (
           <ProjectRow key={gi} group={group} cols="grid-cols-2" sizes="50vw" gap="gap-x-4" />
         ))}
       </div>
-
       <div className="hidden md:flex flex-col gap-12">
         {desktopRows.map((group, gi) => (
           <ProjectRow key={gi} group={group} cols="grid-cols-4" sizes="25vw" gap="gap-x-6" />
         ))}
       </div>
-
     </main>
   );
 }

@@ -16,7 +16,7 @@ export default async function Image() {
   const fontBold = readFileSync(
     join(process.cwd(), "fonts/NimbusSanL-Bol.otf")
   );
-  const { name, role, location } = getSettings();
+  const { name, role, location } = await getSettings();
 
   return new ImageResponse(
     (

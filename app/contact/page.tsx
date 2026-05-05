@@ -1,7 +1,7 @@
 import { getSettings } from "@/lib/content";
 
-export default function ContactPage() {
-    const { email, instagram, contact_intro } = getSettings();
+export default async function ContactPage() {
+    const { email, instagram, contact_intro } = await getSettings();
 
     return (
         <section className="w-full min-h-[100dvh] bg-background text-foreground flex flex-col justify-start px-6 md:px-10 lg:px-16 pt-[60px] pb-12 relative overflow-x-hidden">

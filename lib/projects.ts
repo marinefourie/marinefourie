@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   client: string;
-  tag: string;
+  tag?: string;
   year: number;
   featured?: boolean;
   description?: string;

@@ -27,7 +27,7 @@ const nimbusSans = localFont({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { name, role } = getSettings();
+  const { name, role } = await getSettings();
   const title = `${name} — ${role}`;
   return {
     title: {
@@ -63,8 +63,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const projects = getProjects();
-  const { name, role, email, location } = getSettings();
+  const [projects, { name, role, email, location }] = await Promise.all([getProjects(), getSettings()]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -82,9 +81,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${nimbusSans.variable} ${ptMono.variable} antialiased`}
-      >
+      <body className={`${nimbusSans.variable} ${ptMono.variable} antialiased`}>
         <MenuProvider>
           <Preloader name={name} role={role} />
           <Header name={name} email={email} location={location} />

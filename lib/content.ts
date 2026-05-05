@@ -1,25 +1,5 @@
-import { readFileSync, readdirSync, existsSync } from "fs";
-import { join } from "path";
+import { sanityClient } from "./sanity";
 import type { Project } from "./projects";
-
-const contentDir = join(process.cwd(), "content");
-
-export function getProjects(): Project[] {
-  const projectsDir = join(contentDir, "projects");
-  if (!existsSync(projectsDir)) return [];
-
-  return readdirSync(projectsDir)
-    .filter((f) => f.endsWith(".json"))
-    .map((file) => {
-      const id = file.replace(".json", "");
-      const data = JSON.parse(readFileSync(join(projectsDir, file), "utf-8"));
-      return { id, ...data } as Project;
-    });
-}
-
-export function getProjectById(id: string): Project | undefined {
-  return getProjects().find((p) => p.id === id);
-}
 
 export interface Settings {
   name: string;
@@ -34,19 +14,49 @@ export interface Settings {
   hero_video?: string;
 }
 
-export function getSettings(): Settings {
-  const path = join(contentDir, "settings.json");
-  if (!existsSync(path)) {
-    return {
-      name: "",
-      role: "",
-      location: "",
-      email: "",
-      instagram: "",
-      bio: "",
-      bio_extended: "",
-      contact_intro: "",
-    };
-  }
-  return JSON.parse(readFileSync(path, "utf-8"));
+const projectFields = `
+  "id": slug.current,
+  title,
+  client,
+  year,
+  featured,
+  tag,
+  description,
+  "hero": hero.asset->url,
+  hero_video,
+  "images": images[].asset->url,
+  "videos": videos
+`;
+
+export async function getProjects(): Promise<Project[]> {
+  return sanityClient.fetch(`*[_type == "project"] | order(year desc) { ${projectFields} }`);
+}
+
+export async function getProjectById(id: string): Promise<Project | undefined> {
+  return sanityClient.fetch(
+    `*[_type == "project" && slug.current == $id][0] { ${projectFields} }`,
+    { id }
+  );
+}
+
+const defaultSettings: Settings = {
+  name: "",
+  role: "",
+  location: "",
+  email: "",
+  instagram: "",
+  bio: "",
+  bio_extended: "",
+  contact_intro: "",
+};
+
+export async function getSettings(): Promise<Settings> {
+  const data = await sanityClient.fetch(`
+    *[_type == "settings"][0] {
+      name, role, location, email, instagram, bio, bio_extended, contact_intro,
+      "hero_media": hero_media.asset->url,
+      hero_video
+    }
+  `);
+  return data ?? defaultSettings;
 }

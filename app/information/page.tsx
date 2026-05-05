@@ -1,8 +1,8 @@
 import { getSettings } from "@/lib/content";
 import InformationClient from "@/components/information-client";
 
-export default function InformationPage() {
-    const { bio, bio_extended, instagram } = getSettings();
+export default async function InformationPage() {
+    const { bio, bio_extended, instagram } = await getSettings();
 
     return (
         <section className="w-full min-h-[100dvh] bg-background text-foreground flex flex-col justify-start px-6 md:px-10 lg:px-16 pt-[60px] pb-12 relative overflow-x-hidden">
