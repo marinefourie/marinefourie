@@ -8,16 +8,20 @@ content:
     type: collection
     path: content/projects
     format: json
-    filename: "{fields.title}.json"
+    filename: "{fields.slug}.json"
     view:
       fields: [title, client, year]
     fields:
+      - name: slug
+        label: Slug
+        type: string
+        required: true
       - name: title
-        label: Role / Service (e.g. "Creative Direction")
+        label: Role / Service
         type: string
         required: true
       - name: client
-        label: Client (e.g. "Nike")
+        label: Client
         type: string
         required: true
       - name: year
