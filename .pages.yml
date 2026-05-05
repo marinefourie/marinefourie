@@ -8,7 +8,7 @@ content:
     type: collection
     path: content/projects
     format: json
-    filename: "{fields.title}"
+    filename: "{fields.title}.json"
     view:
       fields: [title, client, year]
     fields:
