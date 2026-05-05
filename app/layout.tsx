@@ -38,6 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [name, role.toLowerCase(), "editorial", "archive"],
     authors: [{ name }],
     creator: name,
+    metadataBase: new URL("https://marinefourie.com"),
     openGraph: {
       type: "website",
       locale: "en_GB",

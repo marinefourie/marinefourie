@@ -3,6 +3,8 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { getSettings } from "@/lib/content";
 
+export const dynamic = "force-static";
+
 export const size = {
   width: 1200,
   height: 630,
