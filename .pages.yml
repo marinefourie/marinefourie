@@ -27,6 +27,9 @@ content:
       - name: tag
         label: Tag
         type: string
+      - name: featured
+        label: Show on homepage
+        type: boolean
       - name: description
         label: About this project
         type: text

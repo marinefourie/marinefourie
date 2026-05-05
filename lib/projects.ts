@@ -4,6 +4,7 @@ export interface Project {
   client: string;
   tag: string;
   year: number;
+  featured?: boolean;
   description?: string;
   hero?: string;
   hero_video?: string;
