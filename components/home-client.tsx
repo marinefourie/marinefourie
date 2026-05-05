@@ -73,8 +73,8 @@ export default function HomeClient({ projects, name, role, location, heroMedia }
         <div className="absolute inset-0 flex items-center justify-end px-6 md:px-10 lg:px-16">
           <div className="flex flex-col items-end gap-1">
             <span className="font-mono text-white text-2xl md:text-3xl font-bold tracking-normal uppercase">{name}</span>
-            <span className="text-white/60 text-[9px] font-bold tracking-normal uppercase" style={{ fontFamily: "var(--font-pt-mono)" }}>{role}</span>
-            <span className="text-white/60 text-[9px] font-bold tracking-normal uppercase" style={{ fontFamily: "var(--font-pt-mono)" }}>{location}</span>
+            <span className="font-mono text-white/60 text-[9px] font-bold tracking-normal uppercase">{role}</span>
+            <span className="font-mono text-white/60 text-[9px] font-bold tracking-normal uppercase">{location}</span>
           </div>
         </div>
       </section>

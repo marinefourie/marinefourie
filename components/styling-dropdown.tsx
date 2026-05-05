@@ -77,7 +77,7 @@ export default function StylingDropdown({ projects }: { projects: Project[] }) {
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setStylingOpen(false)}
-              className={`font-mono text-[9px] font-bold tracking-normal transition-colors duration-200 leading-loose ${hoveredIndex === null ? textColor : hoveredIndex === i ? textColor : washColor}`}
+              className={`font-mono text-[9px] font-bold tracking-normal transition-colors duration-300 leading-loose ${hoveredIndex === null ? textColor : hoveredIndex === i ? textColor : washColor}`}
             >
               {project.title} for {project.client}
             </Link>
@@ -91,7 +91,7 @@ export default function StylingDropdown({ projects }: { projects: Project[] }) {
             key={project.id}
             href={`/projects/${project.id}`}
             onClick={() => setStylingOpen(false)}
-            className={`font-mono text-[9px] font-bold tracking-normal transition-colors duration-200 leading-loose ${hoveredIndex === null ? textColor : hoveredIndex === i ? textColor : washColor}`}
+            className={`font-mono text-[9px] font-bold tracking-normal transition-colors duration-300 leading-loose ${hoveredIndex === null ? textColor : hoveredIndex === i ? textColor : washColor}`}
           >
             {project.title} for {project.client}
           </Link>
