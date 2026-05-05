@@ -41,7 +41,7 @@ export default function ProjectGallery({ project }: { project: Project }) {
     <div className="h-[100dvh] w-screen overflow-hidden bg-background relative">
 
       <div
-        className={`absolute inset-0 flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${panelOpen ? "-translate-y-[45vh]" : "translate-y-0"}`}
+        className={`absolute inset-0 flex flex-col pt-16 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${panelOpen ? "-translate-y-[45vh]" : "translate-y-0"}`}
       >
         <div
           className={`flex-1 relative cursor-pointer overflow-hidden transition-opacity duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${panelOpen ? "opacity-30" : "opacity-100"}`}
@@ -50,7 +50,7 @@ export default function ProjectGallery({ project }: { project: Project }) {
           {allMedia.map((img, i) => (
             <div
               key={i}
-              className={`absolute inset-0 flex items-center justify-center px-6 md:px-0 pt-28 pb-8 transition-opacity duration-500 ${i === currentImage ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
+              className={`absolute inset-y-0 inset-x-6 md:inset-x-0 transition-opacity duration-500 ${i === currentImage ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
             >
               <div className="relative w-full h-full">
                 {isVideo(img) ? (
